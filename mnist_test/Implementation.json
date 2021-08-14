@@ -1,0 +1,27 @@
+{ "seed": 0,
+  "use_gpu": true,
+  "epoch": 20,
+  "batch_size": 8,
+  "logger_train": "train",
+  "logger_test": "test",
+  "logger_path": "mnist",
+  "vis_num": 5,
+  "model_base_path": "model_zoo/mnist_e20b8_staTest0.pth",
+  "method": "method2",
+  "newData": "remove_random",
+  
+  "method1": {
+    "mode": "staTest0",
+    "layer": 1
+  },
+  "method2": {
+    "dump": true,
+    "stochastic": false,
+    "mode": "staTest0",
+    "test_sample_num": 10,
+    "recursion_nums": 5,
+    "training_points": 1000,
+    "if_dir": "mnist_if"
+    }
+  
+}

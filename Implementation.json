@@ -1,0 +1,79 @@
+{
+  "seed": 1,
+  "use_gpu": true,
+  "is_train": true,
+  "is_test": true,
+  "is_gray": false,
+  "is_clip": true,
+  
+  "dataset": {
+    "train": {
+      "name": "train_dataset",
+      "phase": "train",
+      "patch_size": 64,
+      "num_workers": 0,
+      "is_gray": false,
+      "base_path": "./datasets/train_sets/",
+      "sigma": [0, 75],
+      "sigma_test": 25
+    },
+    "val": {
+      "name": "val_dataset",
+      "phase": "val",
+      "num_workers": 0,
+      "sigma_test": 25,
+      "base_path": "./datasets/train_sets/"
+      },
+    "test": {
+      "name": "test_dataset",
+      "phase": "test",
+      "num_workers": 0,
+      "sigma_test": 50,
+      "base_path": "./datasets/test_sets/",
+      "test_set": "Set14"
+    }
+  },
+  "train": {
+    "logger_name": "train",
+    "logger_path": "log_info_train",
+    "loss_fn": "l2",
+    "reduction": "mean",
+    "optimizer": "adam",
+    "learning_rate": 1e-3,
+    "epoch": 100,
+    "batch_size": 8,
+    "val_epoch": 1,
+    "train_checkpoints": 20
+  },
+  "test": {
+    "logger_name": "test",
+    "logger_path": "log_info_test",
+    "result_path": "./results",
+    "noise_level_img": 25,
+    "noise_level_model": 25,
+    "border": false
+  },
+  "method1": {
+    "mode": "normalized_n",
+    "remove_out": false,
+    "outlim": 5,
+    "epoch": 20,
+    "batch_size": 8,
+    "point": [250, 100],
+    "layer": 11,
+    "vis_num": 5
+  },
+  "method2" : {
+    "if_dir": "mnist_if",
+    "testset": "set14",
+    "use_gpu": true,
+    "dump": true,
+    "stochastic": false,
+    "epoch": 20,
+    "batch_size": 8,
+    "test_sample_num": 2,
+    "recursion_nums": 5,
+    "training_points": 1000
+    
+    }
+}
