@@ -70,6 +70,7 @@ def visual(args):
     
     
     
+    
     '''
     # ---------------------------
     # Settings
@@ -81,7 +82,9 @@ def visual(args):
     layer = args['method1']['layer']
     actv_point = args['method1']['point']  
     img_point = [actv_point[0]*2, actv_point[1]*2]
-    actv_point1 = [50,50]
+    img_point1 = [img_point[0], img_point[1]*2]
+    img_point2 = [img_point[0], img_point[1]*3]
+    img_point3 = [img_point[0], img_point[1]*4]
     is_clip = args['is_clip']
     
     logger.info(f'epoch:{epoch}, batch size:{batch_size}, is_clip:{is_clip}')
@@ -115,9 +118,21 @@ def visual(args):
     test_P_view = test_P_view[:, :, [2,1,0]]
     
     logger.info(f'img_name: {img_name}')
-    args['base_path'] = f'act_grad/{mode}/layer{layer}/{testset_name}/{img_point}/{img_name}.npy'
+    args['base_path'] = f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}/{img_point}.npy'
     act_grad = np.load(args['base_path'])
     top_images = utils.topN_images_list(args=args)[:5]
+    
+    args['base_path'] = f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}/{img_point1}.npy'
+    act_grad1 = np.load(args['base_path'])
+    top_images1 = utils.topN_images_list(args=args)[:5]
+    
+    args['base_path'] = f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}/{img_point2}.npy'
+    act_grad2 = np.load(args['base_path'])
+    top_images2 = utils.topN_images_list(args=args)[:5]
+    
+    args['base_path'] = f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}/{img_point3}.npy'
+    act_grad3 = np.load(args['base_path'])
+    top_images3 = utils.topN_images_list(args=args)[:5]
     
     
     
@@ -128,35 +143,103 @@ def visual(args):
     # ---------------------------
     '''
     plt.clf()
-    for i, img_num in enumerate(top_images):
+    for i, (img_num, img_num1, img_num2, img_num3) in enumerate(zip(top_images, top_images1, top_images2, top_images3)):
+
         top_train = train_set[img_num]
         train_H = top_train['H']
-        
         train_H_view = np.uint8((train_H.squeeze()*255).round())
         train_H_view = np.transpose(train_H_view, (1,2,0))
         train_H_view = train_H_view[:, :, [2,1,0]]
         
         act_grad_v = act_grad[img_num]
         
-        plt.subplot(1,6,1)
-        plt.title(f'test_idx: {test_img_num}', fontdict={'fontsize':10}, y=-0.5)
-        plt.scatter([img_point[0]], [img_point[1]], c='r', s=1)
+        
+        top_train1 = train_set[img_num1]
+        train_H1 = top_train1['H']
+        train_H1_view = np.uint8((train_H1.squeeze()*255).round())
+        train_H1_view = np.transpose(train_H1_view, (1,2,0))
+        train_H1_view = train_H1_view[:, :, [2,1,0]]
+        
+        act_grad_v1 = act_grad1[img_num1]
+        
+        
+        top_train2 = train_set[img_num2]
+        train_H2 = top_train2['H']
+        train_H2_view = np.uint8((train_H2.squeeze()*255).round())
+        train_H2_view = np.transpose(train_H2_view, (1,2,0))
+        train_H2_view = train_H2_view[:, :, [2,1,0]]
+        
+        act_grad_v2 = act_grad2[img_num2]
+        
+        
+        top_train3 = train_set[img_num3]
+        train_H3 = top_train3['H']
+        train_H3_view = np.uint8((train_H3.squeeze()*255).round())
+        train_H3_view = np.transpose(train_H3_view, (1,2,0))
+        train_H3_view = train_H3_view[:, :, [2,1,0]]
+        
+        act_grad_v3 = act_grad3[img_num3]
+        
+        
+        plt.suptitle(f'Top 5 images of {img_name}.png (layer: {layer}, point: {img_point[0]})')
+        plt.subplot(4,6,1)
+        plt.title(f'test_id: {test_img_num}\npoint: {img_point}', fontdict={'fontsize':10}, y=-0.3)
+        plt.scatter([img_point[0]], [img_point[1]], c='r', s=2)
         plt.axis('off')
         plt.imshow(test_H_view)
         
-        plt.subplot(1,6,i+2)
-        plt.suptitle(f'Top 5 of {img_name} (layer: {layer}, point: {img_point})')
-        plt.title('train_idx: {}\nif_value: {:.2f}'.format(img_num, act_grad_v), 
-                  fontdict={'fontsize':10}, y=-0.5)
+        plt.subplot(4,6,i+2)
+        plt.title('train_idx: {}\nvalue: {:.2f}'.format(img_num, act_grad_v), 
+                  fontdict={'fontsize':9}, y=-0.3)
         plt.axis('off')
         plt.imshow(train_H_view)
+        
+        plt.subplot(4,6,7)
+        plt.title(f'test_id: {test_img_num}\npoint: {img_point1}', fontdict={'fontsize':10}, y=-0.3)
+        plt.scatter([img_point1[0]], [img_point1[1]], c='r', s=2)
+        plt.axis('off')
+        plt.imshow(test_H_view)
+        
+        plt.subplot(4,6,i+8)
+        plt.title('train_id: {}\nvalue: {:.2f}'.format(img_num1, act_grad_v1), 
+                  fontdict={'fontsize':9}, y=-0.3)
+        plt.axis('off')
+        plt.imshow(train_H1_view)
+        
+        plt.subplot(4,6,13)
+        plt.title(f'test_id: {test_img_num}\npoint: {img_point2}', fontdict={'fontsize':10}, y=-0.3)
+        plt.scatter([img_point2[0]], [img_point2[1]], c='r', s=2)
+        plt.axis('off')
+        plt.imshow(test_H_view)
+        
+        plt.subplot(4,6,i+14)
+        plt.title('train_id: {}\nvalue: {:.2f}'.format(img_num2, act_grad_v2), 
+                  fontdict={'fontsize':9}, y=-0.3)
+        plt.axis('off')
+        plt.imshow(train_H2_view)
+        
+        plt.subplot(4,6,19)
+        plt.title(f'test_id: {test_img_num}\npoint: {img_point3}', fontdict={'fontsize':10}, y=-0.3)
+        plt.scatter([img_point3[0]], [img_point3[1]], c='r', s=2)
+        plt.axis('off')
+        plt.imshow(test_H_view)
+        
+        plt.subplot(4,6,i+20)
+        plt.title('train_id: {}\nvalue: {:.2f}'.format(img_num3, act_grad_v3), 
+                  fontdict={'fontsize':9}, y=-0.3)
+        plt.axis('off')
+        plt.imshow(train_H3_view)
         
         
         
         
     if not os.path.exists(f'fig/m1/{mode}/{testset_name}'):
         os.makedirs(f'fig/m1/{mode}/{testset_name}')
-    plt.savefig(f'fig/m1/{mode}/{testset_name}/{img_name}_{layer}_{img_point}.png')
+    if args['method1']['remove_out']:
+        fig_path = f'fig/m1/{mode}/{testset_name}/{img_name}_{layer}_{img_point[0]}_out{args["method1"]["outlim"]}.png'
+    else:
+        fig_path = f'fig/m1/{mode}/{testset_name}/{img_name}_{layer}_{img_point[0]}_withOutlier.png'
+    plt.savefig(fig_path)
 
 
 

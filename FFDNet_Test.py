@@ -60,7 +60,7 @@ def test(args):
         testset_path = f'rgb/{testset_name}/'
     test_path = os.path.join(test_base, testset_path)
     
-    E_path = f'new_results/{testset_name}'
+    E_path = f'results/{testset_name}'
     if not os.path.exists(E_path):
         os.makedirs(E_path)
     

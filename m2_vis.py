@@ -74,7 +74,7 @@ def vis(args):
     
     base_path = 'mnist_if'
     file_root = 'if_'
-    file_spec = 't1000r5'
+    file_spec = 't1000r5_0804'
     file_name = file_root + file_spec
     
     with open(os.path.join(base_path, file_name+'.json')) as fp:
@@ -84,7 +84,11 @@ def vis(args):
     if_value1 = if_file_n1['influence']
     top_images1 = if_file_n1['helpful'][:5]
     bad_images1 = if_file_n1['harmful'][:5]
-
+    
+    if_file_n2 = if_file['1']
+    if_value2 = if_file_n2['influence']
+    top_images2 = if_file_n2['helpful'][:5]
+    bad_images2 = if_file_n2['harmful'][:5]
     
     
     '''
@@ -93,7 +97,7 @@ def vis(args):
     # ---------------------------
     '''
     plt.clf()
-    for i, (top_num1, bad_num1) in enumerate(zip(top_images1, bad_images1)):
+    for i, (top_num1, bad_num1, top_num2, bad_num2) in enumerate(zip(top_images1, bad_images1, top_images2, bad_images2)):
         
         top_train1 = train_set[top_num1]
         train_H1 = top_train1['H']
@@ -111,36 +115,73 @@ def vis(args):
         if_val2 = if_value1[bad_num1]
         
         
+        top_train2 = train_set[top_num2]
+        train_H2 = top_train2['H']
+        train_H2_view = np.uint8((train_H2.squeeze()*255).round())
+        train_H2_view = np.transpose(train_H2_view, (1,2,0))
+        train_H2_view = train_H2_view[:, :, [2,1,0]]
+        if_val3 = if_value2[top_num2]
         
-        plt.subplot(2,6,1)
+        
+        bad_train2 = train_set[bad_num2]
+        train_B2 = bad_train2['H']
+        train_B2_view = np.uint8((train_B2.squeeze()*255).round())
+        train_B2_view = np.transpose(train_B2_view, (1,2,0))
+        train_B2_view = train_B2_view[:, :, [2,1,0]]
+        if_val4 = if_value2[bad_num2]
+        
+        
+        
+        plt.subplot(4,6,1)
         plt.title('test: baboon\nhelpful', fontdict={'fontsize':10}, y=-0.3)
         plt.axis('off')
         plt.imshow(test_H1_view)
         
-        plt.subplot(2,6,i+2)
+        plt.subplot(4,6,i+2)
         plt.title('train_id: {}\nvalue: {:.2f}'.format(top_num1, if_val1), 
                   fontdict={'fontsize':9}, y=-0.3)
         plt.axis('off')
         plt.imshow(train_H1_view)
         
-        plt.subplot(2,6,7)
-        plt.title('test: baboon\nharmful', fontdict={'fontsize':10}, y=-0.3)
+        plt.subplot(4,6,7)
+        plt.title('test: babara\nhelpful', fontdict={'fontsize':10}, y=-0.4)
+        plt.axis('off')
+        plt.imshow(test_H2_view)
+        
+        plt.subplot(4,6,i+8)
+        plt.title('train_id: {}\nvalue: {:.2f}'.format(top_num2, if_val3), 
+                  fontdict={'fontsize':9}, y=-0.3)
+        plt.axis('off')
+        plt.imshow(train_H2_view)
+        
+        plt.subplot(4,6,13)
+        plt.title('test_id: baboon\nharmful', fontdict={'fontsize':10}, y=-0.3)
         plt.axis('off')
         plt.imshow(test_H1_view)
         
-        plt.subplot(2,6,i+8)
+        plt.subplot(4,6,i+14)
         plt.title('train_id: {}\nvalue: {:.2f}'.format(bad_num1, if_val2), 
                   fontdict={'fontsize':9}, y=-0.3)
         plt.axis('off')
         plt.imshow(train_B1_view)
         
+        plt.subplot(4,6,19)
+        plt.title('test_id: babara\nharmful', fontdict={'fontsize':10}, y=-0.4)
+        plt.axis('off')
+        plt.imshow(test_H2_view)
+        
+        plt.subplot(4,6,i+20)
+        plt.title('train_id: {}\nvalue: {:.2f}'.format(bad_num2, if_val4), 
+                  fontdict={'fontsize':9}, y=-0.3)
+        plt.axis('off')
+        plt.imshow(train_B2_view)
         
         
         
         
     if not os.path.exists(f'fig/m2/{mode}/{testset_name}'):
         os.makedirs(f'fig/m2/{mode}/{testset_name}')
-    plt.savefig(f'fig/m2/{mode}/{testset_name}/baboon.png')
+    plt.savefig(f'fig/m2/{mode}/{testset_name}/baboon_babara.png')
 
         
     
