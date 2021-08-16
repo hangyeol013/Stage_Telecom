@@ -1,7 +1,7 @@
 # Stage_Telecom
 
  
-In DNNs, some specific training points can have a big impact on the model's decision than other training points in making the prediction for test images.   
+In DNNs, some specific training points can have a big impact on the model's decision on a certain test image than other training points.   
 The aim of this project is to tract training points which are most influential to the decision of a denoising neural network, FFDNet.   
    
 You can read the details of this project in **LINK**.   
