@@ -13,16 +13,16 @@ Here, I uploaded all the code for our experiments:
    
    
    
-### Files
+### Files  
 -------------------------------------------------------
-
-We conducted experiments on two model: MNIST classifier, FFDNet
-
-
-
+  
+We conducted experiments on two model: MNIST classifier, FFDNet  
+  
+  
+  
 About all the code for MNIST, you can find them in mnist_test directory.
-
-#### MNIST (in mnist_test directory)
+  
+#### MNIST (in mnist_test directory)  
 - datasets: datasets for mnist, we used built-in mnist data set in pytorch, but for our experiments, we needed to manipulate the dataset. I put the codes in this directory.
 - model.py: mnist classifier model
 - Train.py: train mnist model, outputs trained model, gradient norm vector (for our experiments).
@@ -40,12 +40,12 @@ About all the code for MNIST, you can find them in mnist_test directory.
 - utils_if.py: functions for method2.
 - utils_option.py: functions for mnist_test.
 - Implementation.json: the setting values for mnist test.
+  
+  
+  
+From here, I explain the files for FFDNet experiments.  
 
-
-
-From here, I explain the files for FFDNet experiments.
-
-#### FFDNet
+#### FFDNet  
 - model_zoo: directory containing the trained_model.
 - results: directory containing the results of FFDNet.
 - model.py: FFDNet model
