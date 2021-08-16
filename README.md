@@ -1,10 +1,10 @@
 # Stage_Telecom
 
  
-In DNNs, some specific training points can have a big impact on the model's decision than other training points in making the prediction for test images.
-The aim of this project is to tract training points which are most influential to the decision of a denoising neural network, FFDNet.
-
-You can read the details of this project in **LINK**.
+In DNNs, some specific training points can have a big impact on the model's decision than other training points in making the prediction for test images.   
+The aim of this project is to tract training points which are most influential to the decision of a denoising neural network, FFDNet.   
+   
+You can read the details of this project in **LINK**.   
 
 
 Python: 3.8.1, Pytorch: **ver check**, and Implemented on Spyder
