@@ -4,7 +4,7 @@
 In DNNs, some specific training points can have a big impact on the model's decision on a certain test image than other training points.   
 The aim of this project is to tract training points which are most influential to the decision of a denoising neural network, FFDNet.   
    
-You can read the details of this project in **LINK**.   
+You can read the details of this project in Stage_report.pdf   
    
    
 Python: 3.8.1, Pytorch: **ver check**, and Implemented on Spyder   
