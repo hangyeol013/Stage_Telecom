@@ -42,7 +42,7 @@ Here, I explain all the code in mnist_test directory
 - Implementation.json: the setting values for mnist test.
   
   
-#### Here I explain the parameters in <<Implementation.json>>.  
+#### Here I explain the parameters in <<Implementation.json>>
 - seed: seed number (I set this seed to '0', when I train staTest0 model and when I do the explainability test.
 - use_gpu: whether we use gpu or not. (I always set this to 'true').
 - epoch: number of epoch (I always set this to 20).
@@ -51,7 +51,8 @@ Here, I explain all the code in mnist_test directory
 - vis_num: when we run "vis_" code, it means how many explanatory points do you want to see. (ex. If you set this to 7, you can see 7 explanatory images.)
 - method: 'method1' or 'method2'. when I run "expTrain.py" or "expTest.py" code, I set this value.
 - newData: 'algo' or 'random' or 'remove_algo' or remove_random', when I run "expTrain.py" or "expTest.py" code, I set this value.
-  
+- utils_if.py: functions for method2.
+- utils_option.py: functions for mnist_te
   
   **Method1**  
 - mode: "staTest0" or "staTest1" or "staTest2" or "staTest3" or "staTest4" or "staTest5". when I do the stability test, I changed this name.
