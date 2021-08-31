@@ -95,7 +95,7 @@ def calc_s_test(args, test_L, test_H, test_C, model, train_loader, logger, recur
                 loss = calc_loss(args, train_output, train_H)
                 params = [p for p in model.parameters() if p.requires_grad]
                 hvp = calc_hvp(outputs=loss, weights=params, v=h_estimate)
-                if args['method2']['dump']:
+                if args['method2']['damp']:
                     h_estimate = [_vector + (1 - damp) * _hessian_estimate - _hessian_vector / scale
                               for _vector, _hessian_estimate, _hessian_vector in zip(v, h_estimate, hvp)]
                 else:

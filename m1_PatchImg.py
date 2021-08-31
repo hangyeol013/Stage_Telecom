@@ -112,8 +112,6 @@ def main(json_path = 'Implementation.json'):
     parser.add_argument('-opt', type=str, default=json_path, help='Path to option JSON file.')
 
     args = utils_option.parse(parser.parse_args("").opt)
-    
-    assert args['is_train']
 
     args['cuda'] = args['use_gpu'] and torch.cuda.is_available()
     
