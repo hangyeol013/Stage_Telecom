@@ -83,10 +83,10 @@ def test(args):
         model.cuda()
     else:
         model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
-    
+
+    test_img_idxs = [3520, 3879, 597, 2667, 5673, 8616, 5570, 9489, 3714, 7362]
     # test_img_idxs = topLoss_img(args)
-    # test_img_idxs = [3520, 3879, 597, 2667, 5673, 8616, 5570, 9489, 3714, 7362]
-    test_img_idxs = [1031, 4406]
+    # test_img_idxs = [1031, 4406]
     
     
     '''

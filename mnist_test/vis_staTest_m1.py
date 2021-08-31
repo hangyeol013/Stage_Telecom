@@ -34,7 +34,9 @@ def visual(args):
     test_set = torchvision.datasets.MNIST(root = './datasets', download=True, train=False, transform=transform)
 
     test_imgs = [3520, 3879, 597, 2667, 5673, 8616, 5570, 9489, 3714, 7362]
+    # staTest: you can choose from 0 to 5. (staTest0 ~ staTest5)
     staTest = [0,2,3,4]
+    # num: you can choose from 0 to 9 (later, it will be used with test_imgs like test_imgs[num])
     num = 9
     
     

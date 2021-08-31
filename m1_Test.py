@@ -137,7 +137,9 @@ def test(args):
         loaded_sum = np.sum(loaded_sum, axis=2)
         
         loaded_normalized = loaded_sum/loaded_sum.sum(axis=1).reshape((-1,1))
-        
+
+
+        print(loaded_normalized)
         activation = {}
         def get_activaion(name):
             def hook(model, input, output):

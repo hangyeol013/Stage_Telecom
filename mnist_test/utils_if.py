@@ -45,7 +45,7 @@ def calc_grad(args, img, label, model):
 
 '''
 # ---------------------------------------
-# Calc Hassian Vector Products (WHY ?!!!!!!!!! SECOND GRAD ELEMENTWISE PRODUCTS)
+# Calc Hassian Vector Products
 # ---------------------------------------
 '''
 def calc_hvp(outputs, weights, v):
@@ -62,7 +62,7 @@ def calc_hvp(outputs, weights, v):
 
 '''
 # ---------------------------------------
-# Calc s_test (WHY ?!!!!!!!!! What is damp and scale ?!!!!)
+# Calc s_test
 # ---------------------------------------
 '''
 def calc_s_test(args, test_img, test_label, model, train_loader, logger, recursion_nums=10, 
@@ -92,7 +92,7 @@ def calc_s_test(args, test_img, test_label, model, train_loader, logger, recursi
                 loss = calc_loss(train_output, train_label)
                 params = [p for p in model.parameters() if p.requires_grad]
                 hvp = calc_hvp(outputs=loss, weights=params, v=h_estimate)
-                if args["method2"]['dump']:
+                if args["method2"]['damp']:
                     h_estimate = [_vector + (1 - damp) * _hessian_estimate - _hessian_vector / scale
                               for _vector, _hessian_estimate, _hessian_vector in zip(v, h_estimate, hvp)]
                 else:

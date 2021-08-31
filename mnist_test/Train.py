@@ -84,15 +84,15 @@ def train(args):
     optimizer = optim.SGD(model.parameters(), lr=0.003, momentum=0.9, weight_decay=0.001)
     
     for name, parameter in model.named_parameters():
-        # if name == 'main.0.weight':
-        #     grad_shape1 = parameter.shape[0]
-        #     grad_norm_list1 = np.zeros([len(train_set), grad_shape1])
-        # if name == 'main.2.weight':
-        #     grad_shape2 = parameter.shape[0]
-        #     grad_norm_list2 = np.zeros([len(train_set), grad_shape2])
-        if name == 'main.4.weight':
-            grad_shape3 = parameter.shape[0]
-            grad_norm_list3 = np.zeros([len(train_set), grad_shape3])
+        if name == 'main.0.weight':
+            grad_shape1 = parameter.shape[0]
+            grad_norm_list1 = np.zeros([len(train_set), grad_shape1])
+        if name == 'main.2.weight':
+            grad_shape2 = parameter.shape[0]
+            grad_norm_list2 = np.zeros([len(train_set), grad_shape2])
+        # if name == 'main.4.weight':
+        #     grad_shape3 = parameter.shape[0]
+        #     grad_norm_list3 = np.zeros([len(train_set), grad_shape3])
 
 
     '''
@@ -123,26 +123,26 @@ def train(args):
 
             for name, parameter in model.named_parameters():
 
-                # if name == 'main.0.weight':
-                #     gradient = parameter.grad
-                #     gradient_norm = norm(gradient.cpu(), ord=2, axis=1)
-                #     if e >= 1:
-                #         for img in img_names:
-                #             grad_norm_list1[img, :] += gradient_norm
-                            
-                # if name == 'main.2.weight':
-                #     gradient = parameter.grad
-                #     gradient_norm = norm(gradient.cpu(), ord=2, axis=1)
-                #     if e >= 1:
-                #         for img in img_names:
-                #             grad_norm_list2[img, :] += gradient_norm
-                            
-                if name == 'main.4.weight':
+                if name == 'main.0.weight':
                     gradient = parameter.grad
                     gradient_norm = norm(gradient.cpu(), ord=2, axis=1)
                     if e >= 1:
                         for img in img_names:
-                            grad_norm_list3[img, :] += gradient_norm
+                            grad_norm_list1[img, :] += gradient_norm
+                            
+                if name == 'main.2.weight':
+                    gradient = parameter.grad
+                    gradient_norm = norm(gradient.cpu(), ord=2, axis=1)
+                    if e >= 1:
+                        for img in img_names:
+                            grad_norm_list2[img, :] += gradient_norm
+                            
+                # if name == 'main.4.weight':
+                #     gradient = parameter.grad
+                #     gradient_norm = norm(gradient.cpu(), ord=2, axis=1)
+                #     if e >= 1:
+                #         for img in img_names:
+                #             grad_norm_list3[img, :] += gradient_norm
 
             optimizer.step()
             
@@ -198,14 +198,14 @@ def train(args):
 
     if not os.path.exists(f'grad_norm/{mode}'):
         os.makedirs(f'grad_norm/{mode}')
-    # norm_path1 = f'grad_norm/{mode}/e{epoch}b{batch_size}l1'
-    # norm_path2 = f'grad_norm/{mode}/e{epoch}b{batch_size}l2'
-    norm_path3 = f'grad_norm/{mode}/e{epoch}b{batch_size}l3'
-    np.save(norm_path3, grad_norm_list3)
-    # np.save(norm_path1, grad_norm_list1)
-    # np.save(norm_path2, grad_norm_list2)
-    # logger.info(f'Saved grad norm Matrix in {norm_path1}')
-    # logger.info(f'Saved grad norm Matrix in {norm_path2}')
+    norm_path1 = f'grad_norm/{mode}/e{epoch}b{batch_size}l1'
+    norm_path2 = f'grad_norm/{mode}/e{epoch}b{batch_size}l2'
+    # norm_path3 = f'grad_norm/{mode}/e{epoch}b{batch_size}l3'
+    # np.save(norm_path3, grad_norm_list3)
+    np.save(norm_path1, grad_norm_list1)
+    np.save(norm_path2, grad_norm_list2)
+    logger.info(f'Saved grad norm Matrix in {norm_path1}')
+    logger.info(f'Saved grad norm Matrix in {norm_path2}')
     
 
 
