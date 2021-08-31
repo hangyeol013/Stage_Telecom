@@ -11,8 +11,8 @@ Python: 3.8.1, Pytorch: 1.8.1, and Implemented on Spyder
 Here, I uploaded all the data for our experiments: [Data](https://drive.google.com/drive/folders/1yK_4DgJzb4Ify3Tp7nRX3B2mD8qlQ2iI?usp=sharing)   
 Here, I uploaded all the code for our experiments:   
 
-You need to put the sub-directories in "ffdnet" directory next to the FFDNet codes and put the sub-directories in "mnist" directory next to the mnist codes in "mnist_test" directory.  
-*caution: In the case of mnist, you'll see two identical directory (named datasets), please put the sub-directories in "mnist/datasets" directory into "mnist_test/datasets" directory.
+You need to put the sub-directories in "ffdnet" directory (from data) next to the FFDNet codes and put the sub-directories in "mnist" directory (from data) next to the mnist codes in "mnist_test" directory (from github).  
+*caution: In the case of mnist, you'll see two directory having same name (named datasets), please put the sub-directories in "mnist/datasets" directory (from data) into "mnist_test/datasets" directory (from github).
 
 <br />
    
