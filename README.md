@@ -52,17 +52,16 @@ Here I explain the parameters in <<Implementation.json>>.
 - vis_num: when we run "vis_" code, it means how many explanatory points do you want to see. (ex. If you set this to 7, you can see 7 explanatory images.) 
 - method: 'method1' or 'method2'. when I run "expTrain.py" or "expTest.py" code, I set this value.
 - newData: 'algo' or 'random' or 'remove_algo' or remove_random', when I run "expTrain.py" or "expTest.py" code, I set this value.
-  Method1  
+  **Method1**  
 - mode: "staTest0" or "staTest1" or "staTest2" or "staTest3" or "staTest4" or "staTest5". when I do the stability test, I changed this name.  
-  Method2 (for the parameters in utils_if.py)  
+  **Method2** (for the parameters in utils_if.py)  
 - damp: "true" or "false". From paper, it used damp for stability.
 - stochastic: "true" or "false". When I choose training points for compute the influence values, when I set 'true', it choose 1 point, when I set 'false', it choose the amount of batch size (8). I set this to 'false' for the speed. (but in paper, it chose the point stochastically)
 - mode: "staTest0" or "staTest1" or "staTest2" or "staTest3" or "staTest4" or "staTest5". when I do the stability test, I changed this name.  
 - test_sample_num: for how many test images do you want to get the explanatory images. (I set this to 10, but when it takes pretty long time, so sometimes I set this value to 2 or 3 for testing this code)  
-- recursion_nums:
-- training_points:
-- if_dir:
-- 
+- recursion_nums: recursion numbers (see details in Influence function paper). I set this to 5.
+- training_points: training points (see details in Influence function paper). I set this to 1000.
+- if_dir: directory where the influence values are saved.  
   
   
   
