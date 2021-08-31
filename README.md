@@ -51,9 +51,13 @@ Here I explain the parameters in <<Implementation.json>>.
 - logger_ : name and path of logger (It's just the name or path of logger, I didn't change this)
 - vis_num: when we run "vis_" code, it means how many explanatory points do you want to see. (ex. If you set this to 7, you can see 7 explanatory images.) 
 - method: 'method1' or 'method2'. when I run "expTrain.py" or "expTest.py" code, I set this value.
-- newData: 'algo' or 'random' or 'remove_algo' or remove_random', when I run "expTrain.py" or "expTest.py" code, I set this value.
+- newData: 'algo' or 'random' or 'remove_algo' or remove_random', when I run "expTrain.py" or "expTest.py" code, I set this value.  
+
+
   **Method1**  
 - mode: "staTest0" or "staTest1" or "staTest2" or "staTest3" or "staTest4" or "staTest5". when I do the stability test, I changed this name.  
+
+
   **Method2** (for the parameters in utils_if.py)  
 - damp: "true" or "false". From paper, it used damp for stability.
 - stochastic: "true" or "false". When I choose training points for compute the influence values, when I set 'true', it choose 1 point, when I set 'false', it choose the amount of batch size (8). I set this to 'false' for the speed. (but in paper, it chose the point stochastically)
