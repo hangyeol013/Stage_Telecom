@@ -64,8 +64,7 @@ These parameters are all for the FFDNet. The parameters for our test, you can fi
 - base_path: base_path for dataset
 - sigma: sigma value for noised image.
 - sigma_test: sigma_test value
-<br />
-
+  
 **train**
 - logger_: logger name and path
 - loss_fn: 'l2' or 'l1'. loss function
@@ -76,17 +75,14 @@ These parameters are all for the FFDNet. The parameters for our test, you can fi
 - batch_size: batch_size. I set this to 8 when I tested.
 - val_epoch: epoch num when I want to check validation set accuracy.
 - train_checkpoints: checkpoints for trained model.
-<br />
-
+  
 **test**
 - noise_level_img: noise level on image
 - noise_level_model: noise level on model
 - border: when you compute PSNR or SSIM, if you want to exclude pixels on border, you can set this value. I set this to 'false' when I tested.
-<br />
-
+  
 From here, the parameters are for our tests.
-<br />
-
+  
 **method1**
 - mode: '1000' or 'normalized'. "normalized" means when I compute influence values, I want to use normalized gradient norm. "1000" means I want to use just the gradient norm without any modification. (I named it '1000' because I used 1,000 training images for our test to make it faster.) (you can see the process of this modification (normalizing or not) in "m1_test.py" file.
 - remove_out: whether to remove the outliers or not. ('false' or numbers you want to set as outlier limit.) (you can see the code (FindOutlier) at the bottom in utils_option.py  
