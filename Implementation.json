@@ -52,14 +52,14 @@
     "border": false
   },
   "method1": {
-    "mode": "normalized",
+    "mode": "1000",
     "remove_out": false,
     "outlim": 5,
     "epoch": 20,
     "batch_size": 8,
-    "point": [250, 100],
+    "point": [50, 50],
     "layer": 11,
-    "vis_num": 5
+    "vis_num": 1
   },
   "method2" : {
     "if_dir": "mnist_if",

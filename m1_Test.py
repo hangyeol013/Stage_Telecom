@@ -135,11 +135,12 @@ def test(args):
         loaded_array = np.load(f'grad_norm/e{epoch}b{batch_size}l{layer}_1000.npy')
         loaded_sum = np.sum(loaded_array, axis=3)
         loaded_sum = np.sum(loaded_sum, axis=2)
-        
-        loaded_normalized = loaded_sum/loaded_sum.sum(axis=1).reshape((-1,1))
 
+        if args['method1']['mode'] == 'normalized':
+            loaded_normalized = loaded_sum/loaded_sum.sum(axis=1).reshape((-1,1))
+        else:
+            loaded_normalized = loaded_sum
 
-        print(loaded_normalized)
         activation = {}
         def get_activaion(name):
             def hook(model, input, output):
@@ -155,38 +156,34 @@ def test(args):
         #                           actv_point[1]-1:actv_point[1]+2]
         actv_val[actv_val<0] = 0
         
-        
-        act_path = f'activations/{img_name}_l{layer}_{img_point}'
-        if not os.path.exists('activations'):
-            os.makedirs('activations')
-        np.save(act_path, actv_val)
-        
-        
-        # mul_list = []
-        # for i in range(loaded_array.shape[0]):
-        #     vdot_product = np.vdot(loaded_normalized[i,:], actv_val[0,:])
-        #     # act_prod = np.einsum('k,k', loaded_array[i,:], actv_val[0,:])
-        #     # act_prod = np.einsum('kij,kij',loaded_array[i,:,:,:],actv_val[0,:,:,:])
-        #     # mul_list.append(act_prod)
-        #     mul_list.append(vdot_product)
+        mul_list = []
+        for i in range(loaded_array.shape[0]):
+            vdot_product = np.vdot(loaded_normalized[i,:], actv_val[0,:])
+            # act_prod = np.einsum('k,k', loaded_array[i,:], actv_val[0,:])
+            # act_prod = np.einsum('kij,kij',loaded_array[i,:,:,:],actv_val[0,:,:,:])
+            # mul_list.append(act_prod)
+            mul_list.append(vdot_product)
             
-        # mul_array = np.asarray(mul_list)
-        
-        
-        
-        # '''
-        # # ----------------------
-        # # Save Activations
-        # # ----------------------
-        # '''
-        # if not os.path.exists(f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}'):
-        #     os.makedirs(f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}')
-        
-        # norm_path = f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}/{img_point}'
-        # np.save(norm_path, mul_array)
-        # logger.info(f'Saved act_grad values in {norm_path}')
+        mul_array = np.asarray(mul_list)
 
+        '''
+        # ----------------------
+        # Save Activations
+        # ----------------------
+        '''
+        if not os.path.exists(f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}'):
+            os.makedirs(f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}')
+        
+        norm_path = f'act_grad/{mode}/layer{layer}/{testset_name}/{img_name}/{img_point}'
+        np.save(norm_path, mul_array)
+        logger.info(f'Saved act_grad values in {norm_path}')
 
+        # Only activations (when you want to save only activations not the multiplication of grad_norm and activations)
+        # When you run here, make the code (from 159 to 179) into comments
+        # act_path = f'activations/{img_name}_l{layer}_{img_point}'
+        # if not os.path.exists('activations'):
+        #     os.makedirs('activations')
+        # np.save(act_path, actv_val)
 
 
 
