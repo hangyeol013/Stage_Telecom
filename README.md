@@ -55,6 +55,7 @@ These parameters are all for the FFDNet. The parameters for our test, you can fi
 - is_gray: whether to implement with 'gray' FFDNet or 'rgb' FFDNet. I always set this to false (rgb) when I tested.
 - is_clip: whether to clip the denoised image. I set this to true when I tested.
 <br />
+
 **dataset**
 - phase: this is used when I make the dataset. (see details in "DatasetFFD.py" file)
 - patch_size: patch_size. I always set 64 when I tested.
@@ -64,6 +65,7 @@ These parameters are all for the FFDNet. The parameters for our test, you can fi
 - sigma: sigma value for noised image.
 - sigma_test: sigma_test value
 <br />
+
 **train**
 - logger_: logger name and path
 - loss_fn: 'l2' or 'l1'. loss function
@@ -75,6 +77,7 @@ These parameters are all for the FFDNet. The parameters for our test, you can fi
 - val_epoch: epoch num when I want to check validation set accuracy.
 - train_checkpoints: checkpoints for trained model.
 <br />
+
 **test**
 - noise_level_img: noise level on image
 - noise_level_model: noise level on model
@@ -83,6 +86,7 @@ These parameters are all for the FFDNet. The parameters for our test, you can fi
 
 From here, the parameters are for our tests.
 <br />
+
 **method1**
 - mode: '1000' or 'normalized'. "normalized" means when I compute influence values, I want to use normalized gradient norm. "1000" means I want to use just the gradient norm without any modification. (I named it '1000' because I used 1,000 training images for our test to make it faster.) (you can see the process of this modification (normalizing or not) in "m1_test.py" file.
 - remove_out: whether to remove the outliers or not. ('false' or numbers you want to set as outlier limit.) (you can see the code (FindOutlier) at the bottom in utils_option.py  
@@ -94,6 +98,7 @@ From here, the parameters are for our tests.
 - layer: when I compute the influence values, I need to choose a layer in the network. (See details in "m1_Test.py" file)
 - vis_num: 1(baboon) or 5(barbara). for which test image you want to track the explanatory points.
 <br />
+
 **method2**
 - if_dir: directory where I want to save the influence values.
 - testset: test set name I want to test. I set this 'set14'.
