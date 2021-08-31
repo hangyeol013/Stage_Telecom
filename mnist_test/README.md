@@ -42,6 +42,7 @@ Here, I explain all the code in mnist_test directory
 - Implementation.json: the setting values for mnist test.
 <br />
 <br />
+
 #### Here I explain the parameters in <<Implementation.json>>
 - seed: seed number (I set this seed to '0', when I train staTest0 model and when I do the explainability test.
 - use_gpu: whether we use gpu or not. (I always set this to 'true').
