@@ -46,7 +46,7 @@ Here, I explain the files for FFDNet experiments and implementation.json file.
 - Inplementation.json: the setting values for FFDNet, you can change all the values used in FFDNet and experiments here.
 
 <br />
-Here, I explain the parameters in **"implementation.json"**.
+Here, I explain the parameters in **"implementation.json"**.  
 These parameters are all for the FFDNet. The parameters for our test, you can find them in the bottom.
   
 - seed: seed number
@@ -80,6 +80,7 @@ These parameters are all for the FFDNet. The parameters for our test, you can fi
 - noise_level_model: noise level on model
 - border: when you compute PSNR or SSIM, if you want to exclude pixels on border, you can set this value. I set this to 'false' when I tested.
   
+<br />
 From here, the parameters are for our tests.
   
 **method1**
