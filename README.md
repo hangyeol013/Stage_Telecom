@@ -46,7 +46,7 @@ Here, I explain the files for FFDNet experiments and implementation.json file.
 - Inplementation.json: the setting values for FFDNet, you can change all the values used in FFDNet and experiments here.
 
 <br />
-Here, I explain the parameters in **"implementation.json"**.  
+Here, I explain the parameters in **"implementation.json"**. <br>
 These parameters are all for the FFDNet. The parameters for our test, you can find them in the bottom.
   
 - seed: seed number
@@ -82,7 +82,8 @@ These parameters are all for the FFDNet. The parameters for our test, you can fi
   
 <br />
 From here, the parameters are for our tests.
-  
+<br />
+
 **method1**
 - mode: '1000' or 'normalized'. "normalized" means when I compute influence values, I want to use normalized gradient norm. "1000" means I want to use just the gradient norm without any modification. (I named it '1000' because I used 1,000 training images for our test to make it faster.) (you can see the process of this modification (normalizing or not) in "m1_test.py" file.
 - remove_out: whether to remove the outliers or not. ('false' or numbers you want to set as outlier limit.) (you can see the code (FindOutlier) at the bottom in utils_option.py  
