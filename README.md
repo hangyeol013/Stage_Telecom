@@ -46,10 +46,9 @@ Here, I explain the files for FFDNet experiments and implementation.json file.
 - Inplementation.json: the setting values for FFDNet, you can change all the values used in FFDNet and experiments here.
 
 <br />
-Here, I explain the parameters in "implementation.json".
-
+Here, I explain the parameters in **"implementation.json"**.
 These parameters are all for the FFDNet. The parameters for our test, you can find them in the bottom.
-<br />
+  
 - seed: seed number
 - use_gpu: whether to use gpu or not
 - is_gray: whether to implement with 'gray' FFDNet or 'rgb' FFDNet. I always set this to false (rgb) when I tested.
@@ -93,8 +92,7 @@ From here, the parameters are for our tests.
   barbara: [250, 50], [250, 100], [250, 150], [250, 200]
 - layer: when I compute the influence values, I need to choose a layer in the network. (See details in "m1_Test.py" file)
 - vis_num: 1(baboon) or 5(barbara). for which test image you want to track the explanatory points.
-<br />
-
+  
 **method2**
 - if_dir: directory where I want to save the influence values.
 - testset: test set name I want to test. I set this 'set14'.
