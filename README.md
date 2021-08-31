@@ -13,6 +13,7 @@ Here, I uploaded all the code for our experiments:
 
 You need to put the sub-directories in "ffdnet" directory next to the FFDNet codes and put the sub-directories in "mnist" directory next to the mnist codes in "mnist_test" directory.  
 *caution: In the case of mnist, you'll see two identical directory (named datasets), please put the sub-directories in "mnist/datasets" directory into "mnist_test/datasets" directory.
+
 <br />
    
    
@@ -20,7 +21,7 @@ You need to put the sub-directories in "ffdnet" directory next to the FFDNet cod
 -------------------------------------------------------
   
 We conducted experiments on two model: MNIST classifier, FFDNet  
-About all the code for MNIST, you can find them in mnist_test directory.
+About all the code for MNIST, you can find them in "mnist_test" directory.
   
 <br />
 Here, I explain the files for FFDNet experiments and implementation.json file.  
