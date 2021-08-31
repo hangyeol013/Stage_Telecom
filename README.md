@@ -5,15 +5,15 @@ In DNNs, some specific training points can have a big impact on the model's deci
 The aim of this project is to tract training points which are most influential to the decision of a denoising neural network, FFDNet.   
    
 You can read the details of this project in Stage_report.pdf   
-   
+<br />
    
 Python: 3.8.1, Pytorch: 1.8.1, and Implemented on Spyder   
 Here, I uploaded all the data for our experiments: [Data](https://drive.google.com/drive/folders/1yK_4DgJzb4Ify3Tp7nRX3B2mD8qlQ2iI?usp=sharing)   
 Here, I uploaded all the code for our experiments:   
 
-You need to put the sub-directories in "ffdnet" directory next to the FFDNet codes and put the sub-directories in "mnist" directory next to the mnist codes in "mnist_test" directory  
+You need to put the sub-directories in "ffdnet" directory next to the FFDNet codes and put the sub-directories in "mnist" directory next to the mnist codes in "mnist_test" directory.  
 *caution: In the case of mnist, you'll see two identical directory (named datasets), please put the sub-directories in "mnist/datasets" directory into "mnist_test/datasets" directory.
-   
+<br />
    
    
 ### Files  
