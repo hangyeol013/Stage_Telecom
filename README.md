@@ -46,15 +46,14 @@ Here, I explain the files for FFDNet experiments and implementation.json file.
 - Inplementation.json: the setting values for FFDNet, you can change all the values used in FFDNet and experiments here.
 
 <br />
-Here, I explain the parameters in **"implementation.json"**. <br>
+Here, I explain the parameters in **implementation.json**. <br>
 These parameters are all for the FFDNet. The parameters for our test, you can find them in the bottom.
   
 - seed: seed number
 - use_gpu: whether to use gpu or not
 - is_gray: whether to implement with 'gray' FFDNet or 'rgb' FFDNet. I always set this to false (rgb) when I tested.
 - is_clip: whether to clip the denoised image. I set this to true when I tested.
-<br />
-
+  
 **dataset**
 - phase: this is used when I make the dataset. (see details in "DatasetFFD.py" file)
 - patch_size: patch_size. I always set 64 when I tested.
