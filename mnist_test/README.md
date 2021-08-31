@@ -7,7 +7,7 @@ The aim of this project is to tract training points which are most influential t
 You can read the details of this project in Stage_report.pdf   
    
    
-Python: 3.8.1, Pytorch: **ver check**, and Implemented on Spyder   
+Python: 3.8.1, Pytorch: 1.8.1, and Implemented on Spyder   
 Here, I uploaded all the data for our experiments: [Data](https://drive.google.com/drive/folders/1yK_4DgJzb4Ify3Tp7nRX3B2mD8qlQ2iI?usp=sharing)   
 Here, I uploaded all the code for our experiments:   
    
@@ -52,9 +52,11 @@ Here, I explain all the code in mnist_test directory
 - method: 'method1' or 'method2'. when I run "expTrain.py" or "expTest.py" code, I set this value.
 - newData: 'algo' or 'random' or 'remove_algo' or remove_random', when I run "expTrain.py" or "expTest.py" code, I set this value.
 <br />
+
   **Method1**  
 - mode: "staTest0" or "staTest1" or "staTest2" or "staTest3" or "staTest4" or "staTest5". when I do the stability test, I changed this name.
 <br />
+
   **Method2** (for the parameters in utils_if.py)  
 - damp: "true" or "false". From paper, it used damp for stability.
 - stochastic: "true" or "false". When I choose training points for compute the influence values, when I set 'true', it choose 1 point, when I set 'false', it choose the amount of batch size (8). I set this to 'false' for the speed. (but in paper, it chose the point stochastically)
